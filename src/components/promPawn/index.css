@@ -1,0 +1,31 @@
+.container-prom {
+    height: 100vh;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    background-color: rgba(0, 0, 0, 0.321);
+    user-select: none;
+    position: absolute;
+    z-index: 4;
+}
+
+.pop-up {
+    background-color: rgb(245, 245, 220);
+    height: 63%;
+    width: 7%;
+    display: flex;
+    flex-direction: column;
+    margin-left: 5%;
+}
+
+.container-image {
+    width: 100%;
+    height: 25%;
+    cursor: pointer;
+}
+
+.piece-image {
+    object-fit: contain;
+    width: 100%;
+    height: 100%;
+}
