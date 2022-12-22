@@ -120,3 +120,19 @@
     cursor: pointer;
     opacity: 0;
 }
+
+@media screen and (max-width: 920px) {
+    .btn-leave {
+        left: 85%;
+    }
+}
+
+@media screen and (max-width: 610px) {
+    .btn-leave {
+        left: 76%;
+    }
+
+    .container-user {
+        width: 90%;
+    }
+}

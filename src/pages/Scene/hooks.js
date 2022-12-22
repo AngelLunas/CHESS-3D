@@ -6,6 +6,15 @@ function positionCamera (color) {
     }
 }
 
+function zoomCamera () {
+    if (window.innerWidth <= 768 && window.innerWidth > 500) {
+        return 0.6
+    } else if (window.innerWidth <= 500) {
+        return 0.45
+    }
+}
+
 export {
-    positionCamera
+    positionCamera,
+    zoomCamera
 }

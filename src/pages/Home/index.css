@@ -366,3 +366,33 @@
     flex-direction: column;
 
 }
+
+@media screen and (max-width: 1024px) {
+    .image-home {
+        width: 100%;
+        left: 0;
+        top: 15%;
+    }
+
+    .description-home {
+        width: 60%;
+        z-index: 4;
+        left: 20%;
+        top: 5%;
+    }
+}
+
+@media screen and (max-width: 500px) {
+    .description-home {
+        width: 85%;
+        left: 10%;
+    }
+
+    .back-button-p {
+        left: -59%;
+    }
+
+    .back-button-f {
+        left: -70%;
+    }
+}

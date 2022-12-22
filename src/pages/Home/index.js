@@ -4,6 +4,7 @@ import ClipLoader from "react-spinners/ClipLoader";
 import gsap from 'gsap';
 import { resetData, setAction, setCreateRoom, setEndGame, setFriendRoom, setNamePlayer, setReplay, setWaitingGame } from '../../slice';
 import { useDispatch, useSelector } from 'react-redux';
+import { calculateTopScene } from './hooks';
 import './index.css';
 
 const override = {
@@ -64,7 +65,7 @@ const Home = () => {
             });
 
             gsap.to(containerRef.current, {
-                x: '-100%',
+                x: '-200%',
                 duration: 1.3,
                 opacity: 0,
                 delay: .2    
@@ -80,10 +81,21 @@ const Home = () => {
 
     useEffect(() => {
         if (gameData.reset || gameData.leave) {
+            let width = '';
+            let left = '';
+            
+            if (window.innerWidth > 1024) {
+                width = '60%';
+                left = '40%'
+            } else {
+                width = '100%';
+                left = '0';
+            }
+
             gsap.to(containerSceneRef.current, {
                 opacity: 1,
                 duration: .3,
-                width: '60%'
+                width
             });
             gsap.to(containerRef.current, {
                 x: 0,
@@ -92,7 +104,7 @@ const Home = () => {
                 delay: .2
             });
             gsap.to(containerSceneRef.current, {
-                left: '40%',
+                left,
                 opacity: 1,
                 duration: .8
             }, '-=2');
@@ -257,7 +269,7 @@ const Home = () => {
                     </div>
                 </div>
             </div>
-            <div className='image-home' ref={ containerSceneRef } >
+            <div className='image-home' ref={ containerSceneRef } style={{top: calculateTopScene(gameData)}}>
                 <Scene />
             </div>
             {gameData.waitingGame && gameData.createRoom === false && gameData.roomFriend === false ? <div className='container-waiting'>

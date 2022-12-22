@@ -6,12 +6,13 @@ import Panel from '../../components/panel/index.js';
 import Positions from "../../components/context/index.js";
 import { Provider } from 'react-redux';
 import { store } from "../../store.js";
+import { setLeave } from "../../slice.js";
 import { useDispatch } from "react-redux";
+import { zoomCamera } from "./hooks.js";
 import Prom from "../../components/promPawn/prom.js";
 import UpdataCamera from "./updateCamera.js";
 import gsap from "gsap";
 import './index.css';
-import { setLeave } from "../../slice.js";
 
 const Scene = (props) => {
     const gameData = useSelector(state => state.game);
@@ -44,6 +45,12 @@ const Scene = (props) => {
             });
         }
     }, [gameData.reset, gameData.leave]);
+    
+    useEffect(() => {
+        window.addEventListener('resize', () => {
+            console.log(window.innerWidth);
+        })
+    }, []);
 
     const onLeave = () => {
         dispatch(setLeave(true));
@@ -51,7 +58,7 @@ const Scene = (props) => {
 
     return(
         <div className='container-scene'>
-            <Canvas camera={{position: [40, 40, 95]}} style={{position: 'absolute'}}>
+            <Canvas camera={{position: [40, 40, 95], zoom: zoomCamera()}} style={{position: 'absolute'}}>
                 <UpdataCamera data={gameData}/>
                 <color attach='background' args={['#222226']}/>
                 <ambientLight intensity={0.3}/>
