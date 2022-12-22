@@ -61,7 +61,6 @@ function findDanger (piecee, color, pieces) {
         if (pieces[i].inDanger) {
             for (let pos of pieces[i].inDanger) {
                 if (pos === piecee && pieces[i].dead === false) {
-                    console.log(pos, pieces[i]);
                     return true;
                 };
             }

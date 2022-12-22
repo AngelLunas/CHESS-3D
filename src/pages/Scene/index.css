@@ -130,9 +130,14 @@
 @media screen and (max-width: 610px) {
     .btn-leave {
         left: 76%;
+        top: -13%;
     }
 
     .container-user {
         width: 90%;
+    }
+
+    .interface {
+        height: 95%;
     }
 }

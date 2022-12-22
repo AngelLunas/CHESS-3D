@@ -22,7 +22,6 @@ const Positions = ({children}) => {
 
     useEffect(() => {
         if (dataGameRed.setName && dataGameRed.action === false) {
-            console.log('emit name');
             socket.emit('newUser', dataGameRed.setName);
         }
     }, [dataGameRed.setName]);
@@ -153,7 +152,6 @@ const Positions = ({children}) => {
 
         return () => {
             socket.off('serverRoom', (clientRoom) => {
-                console.log(clientRoom);
             });
         }
     }, []);

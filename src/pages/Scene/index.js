@@ -46,12 +46,6 @@ const Scene = (props) => {
         }
     }, [gameData.reset, gameData.leave]);
     
-    useEffect(() => {
-        window.addEventListener('resize', () => {
-            console.log(window.innerWidth);
-        })
-    }, []);
-
     const onLeave = () => {
         dispatch(setLeave(true));
     };
