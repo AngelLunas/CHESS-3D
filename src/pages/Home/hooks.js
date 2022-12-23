@@ -1,5 +1,5 @@
 function calculateTopScene (gameData) {
-    if ((gameData.waitingGame && gameData.createRoom === false && gameData.roomFriend === false) || gameData.endGame || gameData.createRoom || gameData.playing) {
+    if (gameData.colorPlayer || gameData.playing || gameData.waitingGame || gameData.createRoom || gameData.roomFriend) {
         return 0
     } else {
         return null;

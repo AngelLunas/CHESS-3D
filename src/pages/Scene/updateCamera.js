@@ -9,33 +9,20 @@ const UpdataCamera = ({data}) => {
     let waiting2 = false;
 
     useFrame(state => {
-        if ((data.colorPlayer === 'white' || data.colorPlayer === 'black') && data.playing === false && data.reset === false) {
+        if (data.colorPlayer && waiting === false) {
+            waiting = true;
             gsap.to(state.camera.position, {
                 x: 0,
                 y: 80, 
                 z: 100,
-                delay: 1,
                 duration: 1,
+                delay: 1,
                 ease: 'power3.inOut',
                 onUpdate: () => {
                     state.camera.lookAt(new THREE.Vector3(0, 0, 0));
                 }
             });
         };
-
-        if (data.setName && data.playing === false && waiting === false && !data.colorPlayer && data.roomFriend === false && data.reset === false) {
-            waiting = true;
-            gsap.to(state.camera.position, {
-                y: 120, 
-                z: 0,
-                duration: 1,
-                delay: 1.5,
-                ease: 'power3.inOut',
-                onUpdate: () => {
-                    state.camera.lookAt(new THREE.Vector3(0, 0, 0))
-                }
-            });
-        }
 
         if ((data.reset || data.leave) && waiting2 === false) {
             gsap.to(state.camera.position, {

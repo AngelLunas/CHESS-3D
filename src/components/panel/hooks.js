@@ -12,13 +12,16 @@ import CircleMove from "../Circle";
 import BoxEnemy from "../boxEnemy";
 import { valideCheckmate } from "./dangerCheck";
 
-function setRotationPanel (color) {
-    if (color === 'white') {
+function setRotationPanel (dataGame) {
+    console.log(dataGame.colorPlayer);
+    if (dataGame.colorPlayer === 'white') {
         return [0, 3.15, 0]
-    } else {
+    } else if (dataGame.colorPlayer === 'black'){
         return [0, 0, 0]
-    };
-}
+    } else {
+        return [0, .7, 0]
+   
+} }
 
 function checkmateValue (data, components, position, pos, key) {
     if (data.checkmate && data.checkmate.color === data.player) {

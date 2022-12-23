@@ -6,7 +6,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { setBLock, setColorPlayer, setEndGame, setPlaying, setColorWin, setWaitingGame, setEnemy, setCreateRoom, setHostRoom, setNoRoom, setFriendRoom, setReset, setLeave, setNoPlayer } from "../../slice";
 import { dataPositions } from "./dataPositions";
 
-const socket = io.connect('https://chess3dbackend.herokuapp.com/');
+const socket = io.connect('http://localhost:4000');
 
 const positionsContext = createContext();
 
@@ -82,7 +82,7 @@ const Positions = ({children}) => {
             };
             setTimeout(() => {
                 dispatch(setPlaying(true));
-            }, 1000);
+            }, 400);
         });
 
         socket.on('serverRoom', (data) => {

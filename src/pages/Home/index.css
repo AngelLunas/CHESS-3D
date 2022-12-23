@@ -389,10 +389,19 @@
     }
 
     .back-button-p {
-        left: -59%;
+        left: -62%;
     }
 
     .back-button-f {
         left: -70%;
+    }
+
+    .container-again {
+        width: 70%;
+        height: 15%;
+    }
+
+    .back-button {
+        left: -40%;
     }
 }

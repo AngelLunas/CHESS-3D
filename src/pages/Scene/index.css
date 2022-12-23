@@ -136,4 +136,9 @@
     .container-user {
         width: 90%;
     }
+    
+    .data-left {
+        padding: 5% 4%;
+        height: 90%;
+    }
 }

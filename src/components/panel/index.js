@@ -2,6 +2,7 @@ import React, { useContext, useEffect, useRef } from 'react';
 import { renderBoxs, selectedPiece, setRotationPanel } from './hooks';
 import { useFrame, useLoader } from '@react-three/fiber';
 import { TextureLoader } from 'three';
+import gsap from 'gsap';
 import baseColorUrl from '../../assets/textures/white/Plastic_002_basecolor.jpg';
 import ambientOclussionUrl from '../../assets/textures/white/Plastic_002_ambientOcclusion.jpg';
 import heightUrl from '../../assets/textures/white/Plastic_002_height.png';
@@ -63,8 +64,27 @@ const Panel = (props) => {
         };
     }, [dataGame.value]);
 
+    useEffect(() => {
+        if (dataGame.colorPlayer === 'white') {
+            gsap.to(meshRef.current.rotation, {
+                y: 3.15,
+                duration: .5
+            });
+        } else if (dataGame.colorPlayer === 'black') {
+            gsap.to(meshRef.current.rotation, {
+                y: 0,
+                duration: .5
+            });
+        } else {
+            gsap.to(meshRef.current.rotation, {
+                y: .7,
+                duration: .5
+            });
+        }
+    }, [dataGame]);
+
     return(
-        <mesh rotation={setRotationPanel(dataGame.colorPlayer)} ref={meshRef}>
+        <mesh ref={meshRef}>
             <boxGeometry args={ [115, 10, 115] }/>
             <meshStandardMaterial map={baseColor}
              aoMap={ambientOclussion}
