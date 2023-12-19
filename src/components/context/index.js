@@ -6,7 +6,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { setBLock, setColorPlayer, setEndGame, setPlaying, setColorWin, setWaitingGame, setEnemy, setCreateRoom, setHostRoom, setNoRoom, setFriendRoom, setReset, setLeave, setNoPlayer } from "../../slice";
 import { dataPositions } from "./dataPositions";
 
-const socket = io.connect('https://chess3dbackend.herokuapp.com/');
+const socket = io.connect('https://chess-3d-backend.fly.dev/');
 
 const positionsContext = createContext();
 
