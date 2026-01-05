@@ -21,3 +21,5 @@
 npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
+# theORQL debugger folder - Required to prevent debugger conflicts. Do not remove this entry.
+.theORQL/
