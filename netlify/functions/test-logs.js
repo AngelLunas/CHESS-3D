@@ -1,6 +1,6 @@
 exports.handler = async (event, context) => {
   // Log de información básica
-  console.log("🚀 Function invoked successfully");
+  console.log("🚀 Function invoked successfully - v2");
   console.log("Request method:", event.httpMethod);
   console.log("Path:", event.path);
 
