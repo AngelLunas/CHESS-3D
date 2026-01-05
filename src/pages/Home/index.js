@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useRef } from 'react';
+import React, { useState, useEffect, useRef, useCallback } from 'react';
 import Scene from '../Scene';
 import ClipLoader from "react-spinners/ClipLoader";
 import gsap from 'gsap';
@@ -127,7 +127,9 @@ const Home = () => {
         }
     }, [codeRoom]);
 
-    const backButton = () => {
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+
+    const backButton = useCallback(() => {
         setName('');
         setError(false);
         setCodeRoom(false);
@@ -136,13 +138,15 @@ const Home = () => {
         setLoadingRoom(false);
         dispatch(resetData(false));
         inputName.current.value = '';
-    }
+    }, [dispatch]);
 
     useEffect(() => {
         if (gameData.noPlayer) {
             backButton();
         }
-    }, [gameData.noPlayer]);
+    }, [gameData.noPlayer, backButton]);
+
+    // eslint-disable-next-line react-hooks/exhaustive-deps
 
     useEffect(() => {
         if (gameData.noRoom) {
@@ -163,7 +167,7 @@ const Home = () => {
             dispatch(resetData(true));
             inputName.current.value = '';
         }
-    }, [gameData.leave]);
+    }, [gameData.leave, dispatch]);
 
     const onSubmit = (e) => {
         e.preventDefault();

@@ -1,5 +1,5 @@
 import React, { useContext, useEffect, useRef } from 'react';
-import { renderBoxs, selectedPiece, setRotationPanel } from './hooks';
+import { renderBoxs, selectedPiece } from './hooks';
 import { useFrame, useLoader } from '@react-three/fiber';
 import { TextureLoader } from 'three';
 import gsap from 'gsap';
@@ -62,7 +62,7 @@ const Panel = (props) => {
             });
             data.dispatch(setBLock(true));
         };
-    }, [dataGame.value]);
+    }, [dataGame.value, data, dataGame.indexPiece]);
 
     useEffect(() => {
         if (dataGame.colorPlayer === 'white') {
@@ -81,7 +81,7 @@ const Panel = (props) => {
                 duration: .5
             });
         }
-    }, [dataGame]);
+    }, [dataGame.colorPlayer]);
 
     return(
         <mesh ref={meshRef}>

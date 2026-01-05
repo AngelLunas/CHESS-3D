@@ -16,7 +16,6 @@ const Positions = ({children}) => {
     const [player, setPlayer] = useState('white');
     const [checkmate, setCheckmate] = useState(false);
     const [block, setBlock] = useState(false);
-    const [dataGame, setDataGame] = useState(null);
     const dispatch = useDispatch();
     const dataGameRed = useSelector(state => state.game);
 
@@ -24,13 +23,13 @@ const Positions = ({children}) => {
         if (dataGameRed.setName && dataGameRed.action === false) {
             socket.emit('newUser', dataGameRed.setName);
         }
-    }, [dataGameRed.setName]);
+    }, [dataGameRed.setName, dataGameRed.action]);
 
     useEffect(() => {
         if (dataGameRed.createRoom) {
             socket.emit('createRoom', dataGameRed.setName);
         }
-    }, [dataGameRed.createRoom]);
+    }, [dataGameRed.createRoom, dataGameRed.setName]);
 
     useEffect(() => {
         if (dataGameRed.roomFriend) {
@@ -39,7 +38,7 @@ const Positions = ({children}) => {
                 room: dataGameRed.roomFriend
             });
         }
-    }, [dataGameRed.roomFriend]);
+    }, [dataGameRed.roomFriend, dataGameRed.setName]);
 
     useEffect(() => {
         if (dataGameRed.leave) {
@@ -51,7 +50,6 @@ const Positions = ({children}) => {
         if (dataGameRed.replay) {
             setOnPiece(false);
             setCheckmate(false);
-            setDataGame(null);
             socket.emit('playAgain', 'play again');
         };
     }, [dataGameRed.replay]);
@@ -154,7 +152,7 @@ const Positions = ({children}) => {
             socket.off('serverRoom', (clientRoom) => {
             });
         }
-    }, []);
+    }, [dispatch, player]);
  
     return(
         <positionsContext.Provider value={{
