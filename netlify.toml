@@ -4,3 +4,8 @@
 
 [functions]
   directory = "netlify/functions"
+
+# Edge Functions
+[[edge_functions]]
+  function = "matchmaking"
+  path = "/api/matchmaking"
