@@ -33,7 +33,7 @@ const Scene = (props) => {
                 delay: 1.7
             });
         }
-    }, [gameData.setName, gameData.roomFriend]);
+    }, [gameData.setName, gameData.roomFriend, gameData]);
 
     useEffect(() => {
         if (gameData.reset || gameData.leave) {
@@ -44,7 +44,7 @@ const Scene = (props) => {
                 opacity: 0,
             });
         }
-    }, [gameData.reset, gameData.leave]);
+    }, [gameData.reset, gameData.leave, gameData]);
     
     const onLeave = () => {
         dispatch(setLeave(true));

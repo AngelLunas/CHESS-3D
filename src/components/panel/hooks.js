@@ -12,16 +12,6 @@ import CircleMove from "../Circle";
 import BoxEnemy from "../boxEnemy";
 import { valideCheckmate } from "./dangerCheck";
 
-function setRotationPanel (dataGame) {
-    console.log(dataGame.colorPlayer);
-    if (dataGame.colorPlayer === 'white') {
-        return [0, 3.15, 0]
-    } else if (dataGame.colorPlayer === 'black'){
-        return [0, 0, 0]
-    } else {
-        return [0, .7, 0]
-   
-} }
 
 function checkmateValue (data, components, position, pos, key) {
     if (data.checkmate && data.checkmate.color === data.player) {
@@ -1148,6 +1138,5 @@ export {
     selectedPiece,
     dangers,
     findDanger,
-    findProtection,
-    setRotationPanel
+    findProtection
 }

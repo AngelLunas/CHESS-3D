@@ -6,7 +6,17 @@ import { useDispatch, useSelector } from "react-redux";
 import { setBLock, setColorPlayer, setEndGame, setPlaying, setColorWin, setWaitingGame, setEnemy, setCreateRoom, setHostRoom, setNoRoom, setFriendRoom, setReset, setLeave, setNoPlayer } from "../../slice";
 import { dataPositions } from "./dataPositions";
 
-const socket = io.connect('https://chess-3d-backend.fly.dev/');
+const socket = io.connect('https://chess-3d-backend.fly.dev/', {
+    reconnection: true,
+    reconnectionDelay: 1000,
+    reconnectionDelayMax: 5000,
+    reconnectionAttempts: 5,
+    transports: ['websocket', 'polling'],
+    cors: {
+        origin: '*',
+        methods: ['GET', 'POST']
+    }
+});
 
 const positionsContext = createContext();
 

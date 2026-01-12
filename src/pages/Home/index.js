@@ -54,7 +54,7 @@ const Home = () => {
                 delay: .9
             });
         }
-    }, [gameData.waitingGame]);
+    }, [gameData.waitingGame, gameData]);
 
     useEffect(() => {
         if ((gameData.setName || gameData.createRoom) && gameData.roomFriend === false ) {
@@ -109,7 +109,7 @@ const Home = () => {
                 duration: .8
             }, '-=2');
         }
-    }, [gameData.reset, gameData.leave]);
+    }, [gameData.reset, gameData.leave, gameData]);
 
     useEffect(() => {
         if (codeRoom) {
@@ -127,8 +127,6 @@ const Home = () => {
         }
     }, [codeRoom]);
 
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-
     const backButton = useCallback(() => {
         setName('');
         setError(false);
@@ -145,8 +143,6 @@ const Home = () => {
             backButton();
         }
     }, [gameData.noPlayer, backButton]);
-
-    // eslint-disable-next-line react-hooks/exhaustive-deps
 
     useEffect(() => {
         if (gameData.noRoom) {
@@ -167,7 +163,7 @@ const Home = () => {
             dispatch(resetData(true));
             inputName.current.value = '';
         }
-    }, [gameData.leave, dispatch]);
+    }, [gameData.leave, dispatch, gameData]);
 
     const onSubmit = (e) => {
         e.preventDefault();
