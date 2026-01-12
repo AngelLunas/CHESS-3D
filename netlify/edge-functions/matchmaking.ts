@@ -41,9 +41,10 @@ function findBestRegion(countryCode: string | undefined): string {
 
 // Parsea el rating del jugador desde el header
 function parsePlayerRating(ratingHeader: string | null): number {
+  // Si no se proporciona el header, usar un rating por defecto de principiante (800)
   if (!ratingHeader) {
-    console.error("[Matchmaking] Missing X-Player-Rating header - cannot match by skill level");
-    throw new Error("MISSING_PLAYER_RATING");
+    console.warn("[Matchmaking] Missing X-Player-Rating header - using default beginner rating (800)");
+    return 800;
   }
 
   const rating = parseInt(ratingHeader, 10);
