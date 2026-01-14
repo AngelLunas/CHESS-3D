@@ -62,7 +62,7 @@ const Panel = () => {
             });
             data.dispatch(setBLock(true));
         };
-    }, [dataGame.value, data, dataGame.indexPiece]);
+    }, [dataGame.value, dataGame.indexPiece, data]);
 
     useEffect(() => {
         if (dataGame.colorPlayer === 'white') {
