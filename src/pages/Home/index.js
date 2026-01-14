@@ -163,7 +163,7 @@ const Home = () => {
             dispatch(resetData(true));
             inputName.current.value = '';
         }
-    }, [gameData.leave, dispatch, gameData]);
+    }, [gameData.leave, dispatch]);
 
     const onSubmit = (e) => {
         e.preventDefault();

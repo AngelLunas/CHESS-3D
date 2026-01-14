@@ -13,7 +13,7 @@ import { useSelector } from 'react-redux';
 import { dangers } from './hooks';
 import { setBLock } from '../../slice';
 
-const Panel = (props) => {
+const Panel = () => {
     const [baseColor, ambientOclussion, height, normal, roughness] = useLoader(TextureLoader, [
         baseColorUrl,
         ambientOclussionUrl,
@@ -62,7 +62,7 @@ const Panel = (props) => {
             });
             data.dispatch(setBLock(true));
         };
-    }, [dataGame.value, data, dataGame.indexPiece, dataGame]);
+    }, [dataGame.value, data, dataGame.indexPiece]);
 
     useEffect(() => {
         if (dataGame.colorPlayer === 'white') {
